@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikkah Invitation — Inshad Sadik</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --teal:    #0d5c63;
+  --teal-lt: #1a8c96;
+  --gold:    #c49a3c;
+  --gold-lt: #e8c97a;
+  --gold-dk: #8a6820;
+  --cream:   #fdf8ef;
+  --ink:     #0f1e1e;
+  --mist:    #e8f0f0;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:#0a1a1a;
+  color:var(--ink);
+  font-family:'Cormorant Garamond',Georgia,serif;
+  overflow-x:hidden;
+}
+
+/* ══════════════════════════════════
+   CURTAIN
+══════════════════════════════════ */
+#curtain-wrap{
+  position:fixed;inset:0;z-index:200;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+}
+.c-panel{
+  position:absolute;top:0;width:50%;height:100%;
+  background:linear-gradient(160deg,#1a4040 0%,#0d2e2e 40%,#061a1a 100%);
+  transition:transform 1.5s cubic-bezier(.77,0,.18,1);
+  overflow:hidden;
+}
+.c-panel::after{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    90deg,
+    rgba(196,154,60,.06) 0,rgba(196,154,60,.02) 6px,
+    transparent 6px,transparent 28px
+  );
+}
+.c-left{left:0;transform-origin:left}
+.c-right{right:0;transform-origin:right}
+.c-left.open{transform:scaleX(0)}
+.c-right.open{transform:scaleX(0)}
+
+/* gold top rod */
+#curtain-wrap::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:14px;
+  background:linear-gradient(90deg,#5a3a00,var(--gold),#c49a3c,var(--gold),#5a3a00);
+  z-index:10;
+}
+
+.curtain-center{
+  position:relative;z-index:5;
+  text-align:center;
+  pointer-events:none;
+  padding:2rem;
+}
+.curtain-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(2rem,7vw,3.4rem);
+  color:var(--gold-lt);
+  line-height:1.4;
+  text-shadow:0 0 40px rgba(196,154,60,.4);
+  margin-bottom:1rem;
+}
+.curtain-tap{
+  font-family:'Cinzel',serif;
+  font-size:clamp(.7rem,2vw,.9rem);
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:rgba(232,201,122,.6);
+  animation:breathe 2.4s ease-in-out infinite;
+}
+@keyframes breathe{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.03)}}
+
+/* ══════════════════════════════════
+   PAGE
+══════════════════════════════════ */
+#page{
+  opacity:0;
+  transition:opacity 1s ease .8s;
+}
+#page.show{opacity:1}
+
+/* ── HERO ── */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?w=1400&q=80');
+  background-size:cover;background-position:center;
+  filter:brightness(.38) saturate(1.2);
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 60%,rgba(13,92,99,.55) 0%,rgba(10,26,26,.92) 80%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:3rem 1.5rem;
+  max-width:680px;
+}
+.hero-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(2rem,7vw,3.6rem);
+  color:var(--gold-lt);
+  text-shadow:0 0 60px rgba(196,154,60,.5);
+  line-height:1.3;
+  margin-bottom:.4rem;
+}
+.hero-bismillah-en{
+  font-size:clamp(.65rem,2vw,.82rem);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(232,201,122,.65);
+  margin-bottom:2.5rem;
+}
+.hero-eyebrow{
+  font-family:'Cinzel',serif;
+  font-size:clamp(.6rem,2vw,.78rem);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:1rem;
+}
+.hero-names{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,10vw,5.6rem);
+  font-weight:300;
+  font-style:italic;
+  color:#fff;
+  line-height:1.05;
+  text-shadow:0 4px 30px rgba(0,0,0,.4);
+}
+.hero-amp{
+  display:block;
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,5vw,2.4rem);
+  color:var(--gold);
+  line-height:1.4;
+  margin:.1rem 0;
+}
+.hero-divider{
+  width:60px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:1.8rem auto;
+}
+.hero-date{
+  font-family:'Cinzel',serif;
+  font-size:clamp(.85rem,3vw,1.1rem);
+  letter-spacing:.2em;
+  color:var(--gold-lt);
+}
+.scroll-hint{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  color:rgba(232,201,122,.5);
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  font-family:'Cinzel',serif;
+  animation:bob 2s ease-in-out infinite;
+}
+.scroll-hint span{display:block;margin-top:.4rem;font-size:1.2rem}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
+
+/* ── SECTION COMMON ── */
+section{position:relative}
+.reveal{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+.reveal.in{opacity:1;transform:none}
+
+/* ── QUOTE BAND ── */
+.quote-band{
+  background:linear-gradient(135deg,var(--teal) 0%,#0a3a3d 100%);
+  padding:4rem 2rem;text-align:center;
+  overflow:hidden;
+}
+.quote-band::before{
+  content:'"';
+  position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+  font-family:'Amiri',serif;font-size:12rem;
+  color:rgba(255,255,255,.04);line-height:1;
+}
+.quote-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.6rem,5vw,2.8rem);
+  color:var(--gold-lt);
+  line-height:1.6;
+  margin-bottom:.8rem;
+}
+.quote-english{
+  font-size:clamp(.8rem,2.5vw,1rem);
+  color:rgba(255,255,255,.65);
+  font-style:italic;
+  letter-spacing:.06em;
+  max-width:500px;margin:0 auto;
+}
+.quote-ref{
+  font-family:'Cinzel',serif;
+  font-size:.65rem;letter-spacing:.2em;
+  color:var(--gold);margin-top:.8rem;
+  text-transform:uppercase;
+}
+
+/* ── COUPLE SECTION ── */
+.couple-sec{
+  background:var(--cream);
+  padding:5rem 1.5rem;text-align:center;
+}
+.sec-label{
+  font-family:'Cinzel',serif;
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold-dk);margin-bottom:1rem;
+}
+.couple-grid{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  gap:1rem;max-width:700px;margin:2rem auto;
+  align-items:center;
+}
+.couple-card{padding:1.5rem 1rem}
+.couple-name-big{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,7vw,3.2rem);
+  font-style:italic;font-weight:300;
+  color:var(--teal);line-height:1.1;
+}
+.couple-parentage{
+  font-size:.8rem;color:#5a7070;
+  letter-spacing:.05em;line-height:1.8;
+  margin-top:.5rem;
+}
+.amp-center{
+  font-family:'Amiri',serif;
+  font-size:clamp(2rem,6vw,3.5rem);
+  color:var(--gold);
+  line-height:1;
+}
+.family-note{
+  max-width:480px;margin:1.5rem auto 0;
+  font-size:.88rem;color:#4a6060;
+  line-height:1.9;font-style:italic;
+}
+
+/* ── GALLERY ── */
+.gallery-sec{
+  background:#0a1a1a;
+  padding:5rem 0;
+}
+.gallery-title{
+  text-align:center;margin-bottom:2.5rem;padding:0 1.5rem;
+}
+.gallery-title h2{
+  font-family:'Cinzel',serif;
+  font-size:clamp(.65rem,2vw,.78rem);
+  letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);
+}
+.gallery-strip{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:4px;
+}
+.gallery-strip img{
+  width:100%;aspect-ratio:1;
+  object-fit:cover;
+  filter:brightness(.7) saturate(1.1);
+  transition:filter .4s;
+}
+.gallery-strip img:hover{filter:brightness(.9) saturate(1.3)}
+.gallery-strip .wide{
+  grid-column:span 2;
+  aspect-ratio:2/1;
+}
+/* Islamic phrase overlays on gallery */
+.g-item{position:relative;overflow:hidden}
+.g-label{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.75));
+  padding:1.5rem .8rem .6rem;
+  font-family:'Amiri',serif;
+  font-size:clamp(1rem,3vw,1.5rem);
+  color:var(--gold-lt);
+  text-align:center;
+}
+
+/* ── EVENT DETAILS ── */
+.event-sec{
+  background:linear-gradient(180deg,#0e2020 0%,#071515 100%);
+  padding:5rem 1.5rem;text-align:center;
+  color:#fff;
+}
+.event-card{
+  max-width:560px;margin:0 auto;
+  border:1px solid rgba(196,154,60,.3);
+  border-radius:2px;
+  overflow:hidden;
+  box-shadow:0 0 80px rgba(13,92,99,.3);
+}
+.event-top{
+  background:linear-gradient(135deg,var(--teal),#0a3a3d);
+  padding:2.5rem 2rem;
+}
+.event-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.4rem,5vw,2.2rem);
+  color:var(--gold-lt);
+  line-height:1.4;
+  margin-bottom:.3rem;
+}
+.event-sub{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.event-body{
+  background:var(--cream);
+  padding:2.5rem 2rem;
+  color:var(--ink);
+}
+.date-display{
+  display:flex;align-items:center;justify-content:center;
+  gap:1.5rem;margin:1.5rem 0;
+}
+.d-block{text-align:center}
+.d-num{
+  font-family:'Cinzel',serif;
+  font-size:clamp(2.5rem,8vw,4rem);
+  font-weight:600;color:var(--teal);
+  line-height:1;
+}
+.d-label{
+  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:#6a8a8a;margin-top:.2rem;
+}
+.d-sep{width:1px;height:60px;background:rgba(13,92,99,.2)}
+.event-time{
+  font-family:'Cinzel',serif;
+  font-size:clamp(.85rem,3vw,1.1rem);
+  color:var(--teal);
+  letter-spacing:.1em;
+  margin-top:1rem;
+}
+.event-venue{
+  margin-top:.6rem;
+  font-size:.95rem;color:#3a5555;
+  line-height:1.8;
+}
+.event-venue strong{
+  font-family:'Cinzel',serif;
+  font-size:1.05rem;color:var(--teal);
+  display:block;margin-bottom:.2rem;
+}
+
+/* ── MAP SECTION ── */
+.map-sec{
+  background:#0a1a1a;
+  padding:4rem 1.5rem;
+}
+.map-sec h2{
+  font-family:'Cinzel',serif;
+  font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);text-align:center;margin-bottom:2rem;
+}
+.map-container{
+  max-width:700px;margin:0 auto;
+  border-radius:4px;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(196,154,60,.25),0 20px 60px rgba(0,0,0,.5);
+  position:relative;
+}
+.map-container iframe{
+  width:100%;height:360px;border:none;display:block;
+}
+.map-venue-badge{
+  position:absolute;top:12px;left:12px;
+  background:rgba(10,26,26,.9);
+  border:1px solid rgba(196,154,60,.4);
+  border-radius:3px;
+  padding:.5rem .9rem;
+  font-family:'Cinzel',serif;font-size:.7rem;
+  letter-spacing:.12em;color:var(--gold-lt);
+  backdrop-filter:blur(8px);
+}
+.map-link-btn{
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  margin:1.2rem auto 0;
+  max-width:280px;
+  padding:.85rem 1.5rem;
+  background:linear-gradient(135deg,var(--teal),#0a4a50);
+  color:#fff;
+  text-decoration:none;
+  font-family:'Cinzel',serif;
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  border-radius:2px;
+  transition:all .25s;
+  box-shadow:0 4px 20px rgba(13,92,99,.4);
+}
+.map-link-btn:hover{filter:brightness(1.15);transform:translateY(-2px)}
+
+/* ── ISLAMIC PHRASE BAND ── */
+.phrase-band{
+  background:linear-gradient(135deg,#071510 0%,#0d2a1a 50%,#071510 100%);
+  padding:4rem 1.5rem;text-align:center;
+  border-top:1px solid rgba(196,154,60,.15);
+  border-bottom:1px solid rgba(196,154,60,.15);
+}
+.phrase-band .row{
+  margin-bottom:2.5rem;
+}
+.phrase-band .row:last-child{margin-bottom:0}
+.phrase-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,5vw,2.4rem);
+  color:var(--gold-lt);line-height:1.5;
+}
+.phrase-english{
+  font-size:.8rem;letter-spacing:.1em;
+  color:rgba(255,255,255,.45);
+  font-style:italic;margin-top:.3rem;
+}
+.phrase-dot{
+  color:var(--gold);font-size:.5rem;
+  margin:1.5rem auto;display:block;
+  letter-spacing:.6em;
+}
+
+/* ── CTA / RSVP ── */
+.cta-sec{
+  background:var(--cream);
+  padding:5rem 1.5rem;text-align:center;
+}
+.cta-sec h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,6vw,2.8rem);
+  font-style:italic;font-weight:300;
+  color:var(--teal);margin-bottom:.5rem;
+}
+.cta-sec p{
+  font-size:.88rem;color:#4a6060;
+  letter-spacing:.05em;line-height:1.9;
+  max-width:380px;margin:0 auto 2.5rem;
+}
+.cta-btns{
+  display:flex;flex-wrap:wrap;
+  gap:1rem;justify-content:center;
+}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:.7rem;
+  padding:1rem 2rem;
+  background:#25d366;
+  color:#fff;
+  text-decoration:none;
+  font-family:'Cinzel',serif;
+  font-size:.78rem;letter-spacing:.18em;
+  border-radius:50px;
+  box-shadow:0 6px 24px rgba(37,211,102,.35);
+  transition:all .25s;
+}
+.wa-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.45)}
+.wa-btn svg{width:20px;height:20px;flex-shrink:0}
+.phone-list{
+  margin-top:2rem;
+  display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;
+}
+.phone-item{
+  font-family:'Cinzel',serif;font-size:.8rem;
+  letter-spacing:.12em;color:var(--teal);
+}
+.phone-item a{color:inherit;text-decoration:none}
+
+/* ── FOOTER ── */
+footer{
+  background:#050f0f;
+  padding:2.5rem 1.5rem;text-align:center;
+  border-top:1px solid rgba(196,154,60,.2);
+}
+footer .f-bismillah{
+  font-family:'Amiri',serif;
+  font-size:1.8rem;color:var(--gold);
+  margin-bottom:.5rem;
+}
+footer p{
+  font-size:.7rem;letter-spacing:.12em;
+  color:rgba(255,255,255,.3);text-transform:uppercase;
+  font-family:'Cinzel',serif;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:520px){
+  .couple-grid{grid-template-columns:1fr;gap:.5rem}
+  .amp-center{display:none}
+  .gallery-strip{grid-template-columns:1fr 1fr}
+  .gallery-strip .wide{grid-column:span 2}
+  .date-display{gap:.8rem}
+  .d-num{font-size:2.2rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .c-panel,.reveal,#page{transition:none}
+  .curtain-tap,.scroll-hint{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ CURTAIN ══ -->
+<div id="curtain-wrap" onclick="openCurtain()" role="button" aria-label="Open invitation">
+  <div class="c-panel c-left" id="cl"></div>
+  <div class="c-panel c-right" id="cr"></div>
+  <div class="curtain-center">
+    <div class="curtain-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="curtain-tap">✦ &nbsp; Tap to open your invitation &nbsp; ✦</div>
+  </div>
+</div>
+
+<!-- ══ PAGE ══ -->
+<div id="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content reveal">
+      <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+      <div class="hero-bismillah-en">In the Name of Allah, the Most Gracious, the Most Merciful</div>
+      <div class="hero-eyebrow">You are warmly invited to the</div>
+      <div class="hero-names">
+        Inshad Sadik
+        <span class="hero-amp">﹠</span>
+        His Beloved
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-date">Nikkah Ceremony · Sunday, 21 June 2026</div>
+    </div>
+    <div class="scroll-hint">Scroll to explore <span>↓</span></div>
+  </section>
+
+  <!-- QURAN QUOTE -->
+  <section class="quote-band">
+    <div class="reveal">
+      <div class="quote-arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</div>
+      <div class="quote-english">"And among His signs is that He created for you mates from among yourselves, that you may find tranquility in them."</div>
+      <div class="quote-ref">Quran · Surah Ar-Rum 30:21</div>
+    </div>
+  </section>
+
+  <!-- COUPLE -->
+  <section class="couple-sec">
+    <div class="reveal">
+      <div class="sec-label">The Blessed Union of</div>
+      <div class="couple-grid">
+        <div class="couple-card">
+          <div class="couple-name-big">Inshad<br>Sadik</div>
+          <div class="couple-parentage">Son of<br>Late Al-Haj<br>Munazib A Cader</div>
+        </div>
+        <div class="amp-center">و</div>
+        <div class="couple-card">
+          <div class="couple-name-big">His<br>Beloved</div>
+          <div class="couple-parentage">Daughter of<br>Al-Haj<br>Mohamed Zamzam</div>
+        </div>
+      </div>
+      <p class="family-note">
+        With hearts full of gratitude to Allah (SWT), our families joyfully request the honour of your presence as we witness this sacred bond.
+      </p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-sec">
+    <div class="gallery-title reveal">
+      <h2>✦ &nbsp; A Blessed Occasion &nbsp; ✦</h2>
+    </div>
+    <div class="gallery-strip reveal">
+      <div class="g-item wide">
+        <img src="https://images.unsplash.com/photo-1564424224827-cd24b8915874?w=900&q=80" alt="Islamic Architecture">
+        <div class="g-label">الحَمْدُ لِلّٰهِ</div>
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=500&q=80" alt="Quran">
+        <div class="g-label">بَارَكَ اللّٰهُ</div>
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=500&q=80" alt="Islamic decor">
+        <div class="g-label">مَاشَاءَ اللّٰهُ</div>
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1563298723-dcfebaa392e3?w=500&q=80" alt="Wedding flowers">
+        <div class="g-label">إِنْ شَاءَ اللّٰهُ</div>
+      </div>
+      <div class="g-item wide">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&q=80" alt="Banquet hall">
+        <div class="g-label">Sapphire Banquet Hall</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENT DETAILS -->
+  <section class="event-sec">
+    <div class="reveal" style="max-width:560px;margin:0 auto">
+      <div class="sec-label" style="color:var(--gold);margin-bottom:2rem">Event Details</div>
+      <div class="event-card">
+        <div class="event-top">
+          <div class="event-arabic">إِنْ شَاءَ اللّٰهُ</div>
+          <div class="event-sub">In Shaa Allah · God Willing</div>
+        </div>
+        <div class="event-body">
+          <div class="date-display">
+            <div class="d-block">
+              <div class="d-label">Month</div>
+              <div class="d-num">June</div>
+            </div>
+            <div class="d-sep"></div>
+            <div class="d-block">
+              <div class="d-label">Date</div>
+              <div class="d-num">21</div>
+              <div class="d-label" style="margin-top:.3rem">Sunday</div>
+            </div>
+            <div class="d-sep"></div>
+            <div class="d-block">
+              <div class="d-label">Year</div>
+              <div class="d-num">2026</div>
+            </div>
+          </div>
+          <div class="event-time">🕧 Lunch from 12:30 PM onwards</div>
+          <div class="event-venue">
+            <strong>Sapphire Banquet Hall</strong>
+            414 Galle Road, Beruwala
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="map-sec">
+    <h2 class="reveal">✦ &nbsp; Venue Location &nbsp; ✦</h2>
+    <div class="map-container reveal">
+      <div class="map-venue-badge">📍 Sapphire Banquet Hall</div>
+      <iframe
+        src="https://maps.google.com/maps?q=Sapphire+Banquet+Hall,+414+Galle+Road,+Beruwala&output=embed&z=16"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Venue location map">
+      </iframe>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:.2rem">
+      <a class="map-link-btn" href="https://share.google/xiJ831aasolOTGfWs" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Open in Google Maps
+      </a>
+    </div>
+  </section>
+
+  <!-- ISLAMIC PHRASES -->
+  <section class="phrase-band">
+    <div class="reveal">
+      <div class="row">
+        <div class="phrase-arabic">اللّٰهُمَّ بَارِكْ لَهُمَا وَبَارِكْ عَلَيْهِمَا</div>
+        <div class="phrase-english">"O Allah, bless them and bestow blessings upon them."</div>
+      </div>
+      <span class="phrase-dot">✦ &nbsp; ✦ &nbsp; ✦</span>
+      <div class="row">
+        <div class="phrase-arabic">رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ</div>
+        <div class="phrase-english">"Our Lord, grant us from among our spouses and offspring comfort to our eyes."</div>
+      </div>
+      <span class="phrase-dot">✦ &nbsp; ✦ &nbsp; ✦</span>
+      <div class="row">
+        <div class="phrase-arabic">جَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
+        <div class="phrase-english">"He placed between you affection and mercy." — Quran 30:21</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP / WHATSAPP -->
+  <section class="cta-sec">
+    <div class="reveal">
+      <div class="sec-label">Join Us</div>
+      <h2>Your presence is our joy</h2>
+      <p>We would be honoured to celebrate this blessed occasion with you. Please reach out to confirm your attendance.</p>
+      <div class="cta-btns">
+        <a class="wa-btn" href="https://wa.me/94777653646" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp · 0777 653646
+        </a>
+        <a class="wa-btn" href="https://wa.me/940777148286" target="_blank" rel="noopener" style="background:#128c7e;box-shadow:0 6px 24px rgba(18,140,126,.35)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp · 0777 148286
+        </a>
+      </div>
+      <div class="phone-list">
+        <div class="phone-item">📞 <a href="tel:+94777653646">0777 653646</a></div>
+        <div class="phone-item">📞 <a href="tel:+940777148286">0777 148286</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="f-bismillah">بَارَكَ اللّٰهُ</div>
+    <p>May Allah bless this union with love, mercy and happiness · Nikkah of Inshad Sadik · 21 June 2026</p>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+function openCurtain(){
+  const wrap=document.getElementById('curtain-wrap');
+  document.getElementById('cl').classList.add('open');
+  document.getElementById('cr').classList.add('open');
+  setTimeout(()=>{
+    wrap.style.pointerEvents='none';
+    const page=document.getElementById('page');
+    page.classList.add('show');
+    setTimeout(()=>wrap.style.display='none',2400);
+    // Kick off scroll reveals
+    setupReveal();
+  },400);
+}
+
+function setupReveal(){
+  const els=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  },{threshold:.12});
+  // First hero already in view
+  const hero=document.querySelector('.hero .reveal');
+  if(hero) hero.classList.add('in');
+  els.forEach(el=>{ if(el!==hero) obs.observe(el); });
+}
+</script>
+</body>
+</html>
